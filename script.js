@@ -107,7 +107,7 @@ function getTopTracks(token) {
     title.textContent = `${labels[range]}`;
     column.appendChild(title);
 
-    fetch(`https://api.spotify.com/v1/me/top/tracks?limit=100&time_range=${range}`, {
+    fetch(`https://api.spotify.com/v1/me/top/tracks?limit=50&time_range=${range}`, {
       headers: { Authorization: "Bearer " + token },
     })
       .then(res => res.json())
