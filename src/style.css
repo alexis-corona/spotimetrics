@@ -2,22 +2,82 @@ body {
   font-family: Arial, sans-serif;
   background: #121212;
   color: white;
+  margin: 0;
+  padding: 0px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 80px;
+  padding-bottom: 20px;
+  width: 100%;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.title-container {
   text-align: center;
-  padding: 20px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: auto;
+  white-space: nowrap;
+}
+
+.github-link {
+  position: absolute;
+  left: 30px;
+  top: 50%; /* Esto ahora sí funcionará bien */
+  transform: translateY(-50%);
+  display: flex;
+}
+
+.github-img {
+  height: 40px;
+  width: auto;
+  filter: invert(1); /* Para que sea blanca */
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  display: block;
+}
+
+.github-img:hover {
+  transform: scale(1.1);
 }
 
 h1 {
   color: #1DB954;
+  margin: 0;
+}
+
+h2 {
+  color: #1DB954;
+  margin-bottom: 15px;
+  font-size: 20px;  
 }
 
 button {
-  padding: 10px 20px;
+  padding: 10px 25px;
   font-size: 16px;
   background: #1DB954;
   border: none;
   color: white;
   cursor: pointer;
-  margin-top: 20px;
+  border-radius: 25px;
+  font-weight: bold;
+  position: absolute;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+button:hover {
+  background: #1ed760;
+  transform: scale(1.1);
+  transform: translateY(-50%) scale(1.05);
 }
 
 .tracks-grid {
@@ -32,12 +92,6 @@ button {
   background: #1e1e1e;
   padding: 20px;
   border-radius: 15px;
-}
-
-h2 {
-  color: #1DB954;
-  margin-bottom: 15px;
-  font-size: 20px;  
 }
 
 .track {
@@ -59,4 +113,5 @@ h2 {
 .track strong {
   font-size: 20px;
   font-weight: normal;
+  display: block;
 }
