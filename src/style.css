@@ -1,115 +1,151 @@
+/**
+ * Project: Spotimetrics
+ * Description: Spotify-inspired UI styling. Implements a dark theme, 
+ * responsive grid layouts, and interactive components.
+ *
+ * Author: Alexis Corona
+ * Version: 1.0.0 (stable)
+ */
+
+/* Global Reset and Typography: Base styles for the application */
 body {
-  font-family: Arial, sans-serif;
-  background: #121212;
+  font-family: 'Roboto', Arial, sans-serif;
+  background: #121212; /* Spotify's deep dark background */
   color: white;
   margin: 0;
-  padding: 0px;
+  padding: 0;
 }
 
+/* Navigation Bar: Sticky container using Flexbox for layout */
 .navbar {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 80px;
-  padding-bottom: 20px;
-  width: 100%;
-  position: relative;
+  padding: 20px;
+  background: #000;
+  position: sticky; /* Stays at the top while scrolling */
+  top: 0;
+  z-index: 100;
+  height: 80px;
   box-sizing: border-box;
 }
 
-.title-container {
-  text-align: center;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: auto;
-  white-space: nowrap;
+/* View Switchers: Button group for Tracks/Artists toggle */
+.selector-container {
+  display: flex;
+  gap: 15px;
 }
 
+/* Interaction Controls: Pill-shaped buttons with transition effects */
+.view-btn {
+  background: transparent;
+  color: white;
+  border: 1px solid #1DB954; /* Spotify's Green */
+  padding: 8px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+/* Active State: Highlighted button for current view */
+.view-btn.active {
+  background: #1DB954;
+  color: black;
+}
+
+/* Hover State: Subtle feedback for non-active buttons */
+.view-btn:hover:not(.active) {
+  background: rgba(29, 185, 84, 0.1);
+}
+
+/* External Links and Branding Positions: Absolute placement for UI balance */
 .github-link {
   position: absolute;
   left: 30px;
-  top: 50%; /* Esto ahora sí funcionará bien */
-  transform: translateY(-50%);
-  display: flex;
 }
 
+/* Brand Assets: Logo filtering for dark mode compatibility */
 .github-img {
-  height: 40px;
-  width: auto;
-  filter: invert(1); /* Para que sea blanca */
-  cursor: pointer;
-  transition: transform 0.2s ease;
-  display: block;
+  height: 35px;
+  filter: invert(1); /* Converts black SVG to white */
 }
 
-.github-img:hover {
-  transform: scale(1.1);
-}
-
-h1 {
-  color: #1DB954;
-}
-
-h2 {
-  color: #1DB954;
-  margin-bottom: 15px;
-  font-size: 20px;  
-}
-
-button {
-  padding: 10px 25px;
-  font-size: 16px;
-  background: #1DB954;
-  border: none;
-  color: white;
-  cursor: pointer;
-  border-radius: 25px;
-  font-weight: bold;
+/* Authentication Trigger Styling: High-visibility login/logout button */
+#login {
   position: absolute;
   right: 30px;
-  top: 50%;
-  transform: translateY(-50%);
+  background: #1DB954;
+  border: none;
+  color: black;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
-button:hover {
-  background: #1ed760;
-  transform: scale(1.1);
-  transform: translateY(-50%) scale(1.05);
-}
-
-.tracks-grid {
+/* Main Content: Responsive CSS Grid for time-range columns */
+.content-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
-  margin-top: 40px;
-  text-align: left;
+  /* Auto-fits columns based on available width (min 320px) */
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 25px;
+  padding: 40px;
 }
 
+/* Individual Time Range Columns: Containers for filtered data (4w, 6m, All) */
 .column {
-  background: #1e1e1e;
+  background: #181818;
   padding: 20px;
-  border-radius: 15px;
+  border-radius: 12px;
 }
 
-.track {
-  margin-bottom: 20px;
+/* Column Headers: Typography for time range categories */
+.column h2 {
+  color: #1DB954;
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 1.4rem;
 }
 
-.track img {
-  margin-top: 10px;
-  border-radius: 10px;
-  width: 50%;
-  max-width: 200px;
+/* Item Cards: Dynamic entries for tracks/artists using Flexbox */
+.item-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 8px;
+  transition: background 0.2s;
 }
 
-.artist {
-  color: #aaa;
-  font-size: 20px;
+/* Item Interactivity: Visual feedback on user hover */
+.item-card:hover {
+  background: #282828; /* Subtle highlight on hover */
 }
 
-.track strong {
-  font-size: 20px;
-  font-weight: normal;
+/* Media Assets: Standardized track/artist imagery */
+.item-card img {
+  width: 65px;
+  height: 65px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+/* Information Container: Vertical stack for textual metadata */
+.item-info {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Primary Text: Track or Artist name styling */
+.item-name {
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+
+/* Secondary Text: Sub-labels for artists or additional info */
+.item-subtext {
+  color: #b3b3b3;
+  font-size: 0.8rem;
 }
